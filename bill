@@ -7,7 +7,7 @@ class bill1
     {
         
         BufferedReader br=new BufferedReader(new InputStreamReader(System.in));
-        float d,sum=0;
+        float d,sum=0,g,sum1=0;
         int n,i;
         //List<Pair> prodcost=new ArrayList<Pairs>();
         System.out.println("enter the number of products");
@@ -18,16 +18,19 @@ class bill1
         float mult[]=new float[n];
         float discount[]=new float[n];
         float disper[]=new float[n];
+        float gst[]=new float[n];
         for(i=0;i<n;i++)
         {
             System.out.println("enter the product name");
           prod[i]=br.readLine();
-          System.out.println("enter no. of product cost");
+          System.out.println("enter no. of product");
           num[i]=Float.parseFloat(br.readLine());
           System.out.println("enter the cost");
           cost[i]=Float.parseFloat(br.readLine());
           System.out.println("enter discount percentage");
           discount[i]=Float.parseFloat(br.readLine());
+          System.out.println("enter gst");
+          gst[i]=Float.parseFloat(br.readLine());
           
 
         } 
@@ -39,17 +42,22 @@ class bill1
           mult[i]=disper[i]*num[i];
           
            sum=sum+mult[i];
+           g=(gst[i]/100)*mult[i];
+          
+           sum1+=mult[i]+g;
           
         } 
+        
          System.out.println("product list");
-         System.out.println("serial no"+"\t"+"name"+"\t" +"cost"+"\t"+"no. of item"+"\t"+"discount %"+"\t"+"net cost");
+         System.out.println("serial no"+"\t"+"name"+"\t" +"cost"+"\t"+"no. of item"+"\t"+"discount %"+"\t"+"net cost"+"\t"+"GST");
              for(i=0;i<n;i++)
               {
-              System.out.println("product"+(i+1)+"\t"+prod[i]+"\t" +cost[i]+"\t"+"\t"+num[i]+"\t"+discount[i]+"\t"+"\t"+mult[i]);
+              System.out.println("product"+(i+1)+"\t"+prod[i]+"\t" +cost[i]+"\t"+"\t"+num[i]+"\t"+discount[i]+"\t"+"\t"+mult[i]+"\t"+"\t"+gst[i]);
               }
            System.out.println();  
    
         System.out.println("total cost="+sum);
+        System.out.println("after tax the amount is"+sum1);
         }
     }
         
